@@ -1,0 +1,28 @@
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center">
+        <div class="w-75">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <div class="text-center">
+                    <h2><strong>Sign Up Your User Account</strong></h2>
+                    <p>Fill all form field to go to next step</p>
+                    <ul id="progressbar" class="d-flex justify-content-center">
+                        <li [ngClass]="{'active':tabIndex ===currentIndex }" id="tabs" *ngFor='let tab of wizardTabs; index as tabIndex' (click)='wizardButtonClick(tabIndex)'>
+                            <strong>{{tab}}</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-container">
+                    <ng-content select="[sample]"></ng-content>
+                </div>
+                <!-- <div class='footer border-left mx-3' dir="ltr" fxLayoutGap="5px">
+                    <button class="btn btn-sm btn-primary btn-nc mr-5" style="width: 10 rem;">Review and
+                        Purchase</button>
+
+                    <button class="btn btn-sm btn-outline-primary btn-nc" disabled>
+                        < Previous</button>
+                    <button class="btn btn-sm btn-outline-primary btn-nc">Next : Client-Server Plans ></button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

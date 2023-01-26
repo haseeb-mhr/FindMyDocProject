@@ -1,0 +1,65 @@
+<div class="container w-100 justify-content-center">
+    <div class="card w-100">
+        <h4 class="card-header">Update User Role</h4>
+        <div class="card-body w-100">
+            <div class="row">
+                <div class="col-5">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" formControlName="firstName" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" formControlName="lastName" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="username">User CNIC</label>
+                            <input type="text" formControlName="username" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Contact Email</label>
+                            <input type="text" formControlName="email" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label for="userRole">User Role</label>
+                            <select class="form-control" id="userRole" formControlName="userRole">
+                                <option *ngFor=" let usersRole of usersRoles; index as index" [value]="index">
+                                    {{usersRole}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="loading" class="btn btn-primary">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Update
+                            </button>
+                            <a routerLink="/" class="btn btn-link">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-7">
+                    <table class="table table-striped overflow-y">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>User CNIC</th>
+                                <th>Email</th>
+                                <th>User Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of userLists">
+                                <td>{{user.FirstName + ' ' + user.LastName}}</td>
+                                <td>{{user.CNIC}}</td>
+                                <td>{{user.Email}}</td>
+                                <td>{{getUserRole(user.userRole)}}</td>
+                                <td><i class="fa fa-pencil-square-o" (click)='OnSelection(user)'></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

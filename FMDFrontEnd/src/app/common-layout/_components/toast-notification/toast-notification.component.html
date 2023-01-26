@@ -1,0 +1,7 @@
+<ngb-toast *ngFor='let toast of notificationService.toasts' [autohide]='true' [delay]='toastDelay' (hide)='notificationService.remove(toast)' [class]='toast.className' style="margin-top: 45px;">
+    <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
+        <ng-template [ngTemplateOutlet]="toast.body"></ng-template>
+    </ng-template>
+
+    <ng-template #text>{{ toast.body }}</ng-template>
+</ngb-toast>

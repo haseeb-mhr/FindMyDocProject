@@ -1,0 +1,128 @@
+<div class="container col-md-8 pt-2 justify-content-center" *ngIf='!showMap'>
+    <div class="card">
+        <h4 class="card-header">Practice Locations</h4>
+        <div class="card-body">
+            <form [formGroup]="form">
+
+                <div class="form-row">
+                    <div class="form-group col-8">
+                        <label for="locationName">Add Location Name</label>
+                        <input type="text" placeholder="Enter Location Name" formControlName="locationName" />
+                        <div *ngIf="submitted && f.locationName.errors" class="invalid-feedback">
+                            <div *ngIf="f.locationName.errors.required">Location Name is required</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="city">City</label>
+                                <input type="text" formControlName="city" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+                                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                    <div *ngIf="f.city.errors.required">City is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="consulationFee">Consulation Fee</label>
+                                <input type="text" formControlName="consulationFee" [ngClass]="{ 'is-invalid': submitted && f.consulationFee.errors }" />
+                                <div *ngIf="submitted && f.consulationFee.errors" class="invalid-feedback">
+                                    <div *ngIf="f.consulationFee.errors.required">Consulation Fee is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="openingTime">Opening Time</label>
+                                <input type="time" formControlName="openingTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.openingTime.errors }" />
+                                <div *ngIf="submitted && f.openingTime.errors" class="invalid-feedback">
+                                    <div *ngIf="f.openingTime.errors.required">Opening Time is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="closingTime">Closing Time</label>
+                                <input type="time" formControlName="closingTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.closingTime.errors }" />
+                                <div *ngIf="submitted && f.closingTime.errors" class="invalid-feedback">
+                                    <div *ngIf="f.closingTime.errors.required">Closing Time is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4 pt-4">
+                        <div class="ml-3 bd-highlight pt-2">
+                            <agm-map [latitude]='latitude' [longitude]='longitude' [zoom]='zoom'>
+                                <agm-marker [latitude]='latitude' [longitude]='longitude'></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="email">What's your Email?</label>
+                        <input type="text" placeholder="Enter your Contact Email" formControlName="email" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email is invalid</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="phoneNo">What's your work Phone number?</label>
+                        <input type="text" placeholder="Your Contact Phone Number" formControlName="phoneNo" [ngClass]="{ 'is-invalid': submitted && f.phoneNo.errors }" />
+                        <div *ngIf="submitted && f.phoneNo.errors" class="invalid-feedback">
+                            <div *ngIf="f.phoneNo.errors.required">Phone Number is required</div>
+                            <div *ngIf="f.phoneNo.errors?.pattern">Phone Number must follow the 0312 1234567 format!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <div class="form-group col-5">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" formControlName="latitude" placeholder="Location Latitude" [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }" />
+                        <div *ngIf="submitted && f.latitude.errors" class="invalid-feedback ">
+                            <div *ngIf="f.latitude.errors.required">Location Latitude is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" formControlName="longitude" placeholder="Location Longitude" [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }" />
+                        <div *ngIf="submitted && f.longitude.errors" class="invalid-feedback ">
+                            <div *ngIf="f.longitude.errors.required">Location Longitude is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-3 pt-2">
+                        <input type="submit" value="Get Location" (click)="showMap = true" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                        <div *ngIf="f.address.errors.required">Address is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex justify-content-around">
+                    <button (click)="OnButtonClick('Previous')">Previous</button>
+                    <button [disabled]="loading" (click)="onSubmit()">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Save Info
+                    </button>
+                    <button (click)="OnButtonClick('Next')" *ngIf="NextButton()">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="bg-secondary overflow-hidden py-4 px-5 h-100 w-100 d-flex align-items-center justify-content-center" *ngIf='showMap'>
+    <div class="bg-white w-75">
+        <app-map-loader (locationEmitter)="getCurrentLocation($event)"></app-map-loader>
+        <hr class="m-0">
+        <div class="row px-4 pt-2 pb-2">
+            <button class="btn btn-sm btn-outline-primary btn-nc" (click)="showMap = false">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

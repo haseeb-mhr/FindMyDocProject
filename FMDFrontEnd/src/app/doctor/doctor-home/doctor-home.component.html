@@ -1,0 +1,43 @@
+<ul class="list-group">
+    <div class="team text-center pb-3">
+        <h2>Your Doctor</h2>
+    </div>
+    <form [formGroup]="form">
+
+        <div class="container">
+            <div class="input-group mb-3">
+                <select formControlName="doctorSpeciality" class="custom-select mt-0">
+                    <option selected>Choose Doctor Specialization...</option>
+                    <option *ngFor="let speciality of doctorSpecialities" [value]="speciality">
+                        {{speciality}}
+                    </option>
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text" (click)="onSubmit()">Search</label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row" *ngIf="doctors">
+        <div class="col-md-3 mb-3" *ngFor='let doctor of doctors; let i = index'>
+            <div class="card card-default p-1">
+                <img class="card-img-top" [src]="PhotoFilePath + doctor.user.photoFileName" alt="Card image" style="width:100%; height: 300px;">
+                <div class="card-body">
+                    <h4 class="card-title">{{doctor.user.userTitle + ' ' + doctor.user.firstName+ ' ' + doctor.user.lastName}}
+                    </h4>
+                    <h5 class="card-title">Contact No : {{doctor.user.phoneNo}}</h5>
+                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <div class="row col-lg-12 mb-3">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <a class="btn btn-primary nav-item nav-link-edit" routerLink="/doctor/profile">See Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>

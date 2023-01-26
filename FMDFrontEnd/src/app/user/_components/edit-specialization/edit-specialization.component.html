@@ -1,0 +1,39 @@
+<div class="container col-md-8 pt-2 justify-content-center">
+    <div class="card">
+        <h4 class="card-header">Edit Specialization</h4>
+        <div class="card-body">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="specialization">What is your specialization?</label>
+                            <input type="text" formControlName="specialization" [ngClass]="{ 'is-invalid': submitted && f.specialization.errors }" />
+                            <div *ngIf="submitted && f.specialization.errors" class="invalid-feedback">
+                                <div *ngIf="f.specialization.errors.required">Specialization is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="experience">Experience</label>
+                            <input type="text" formControlName="experience" [ngClass]="{ 'is-invalid': submitted && f.experience.errors }" />
+                            <div *ngIf="submitted && f.experience.errors" class="invalid-feedback">
+                                <div *ngIf="f.experience.errors.required">Experience is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="additonalDetails">Additonal Details</label>
+                    <textarea formControlName="additonalDetails" rows="3"></textarea>
+                </div>
+                <div class="form-group d-flex justify-content-around">
+                    <button (click)="OnButtonClick('Previous')">Previous</button>
+                    <button [disabled]="loading" (click)="onSubmit()">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Save Info
+                    </button>
+                    <button routerLink="../../" *ngIf="NextButton()">Finish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

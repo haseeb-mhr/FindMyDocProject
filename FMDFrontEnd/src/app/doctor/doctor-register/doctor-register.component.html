@@ -1,0 +1,24 @@
+<app-wizard-tabs [wizardTabs]=' wizardTabs' class="mt-5 h-100" [currentIndex]='tabIndex' (currentIndexEmitter)=" OnWizardTabChange($event)">
+    <div sample>
+        <app-user-update [userRole]='userRole' (buttonClicked)='buttonClicked($event)' *ngIf="tabIndex == 0"></app-user-update>
+
+        <app-edit-practice-location [userRole]='userRole' (buttonClicked)='buttonClicked($event)' *ngIf="tabIndex == 1"></app-edit-practice-location>
+
+        <app-edit-qualification [userRole]='userRole' (buttonClicked)='buttonClicked($event)' *ngIf="tabIndex == 2"></app-edit-qualification>
+
+        <app-edit-specialization [userRole]='userRole' (buttonClicked)='buttonClicked($event)' *ngIf="tabIndex == 3"></app-edit-specialization>
+
+    </div>
+    <!--<button class="btn btn-primary" (click)="index = 0"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit
+            Account</button>
+        <button class="btn btn-primary" (click)="index = 1"><i class="fa fa-clock-o" aria-hidden="true"></i>
+            Appointments
+            (0)</button>
+        <button class="btn btn-primary" (click)="index = 2">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Practice Locations
+            (0)
+        </button>
+        <button class="btn btn-primary" (click)="index = 3"><i class="fa fa-phone" aria-hidden="true"></i> Contact
+            Information</button>
+        <button class="btn btn-primary" (click)="index = 4"><i class="fa fa-key fa-fw"></i>Change Password</button> -->
+</app-wizard-tabs>

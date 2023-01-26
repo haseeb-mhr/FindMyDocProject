@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap'
+
+.modal-dialog
+    margin-top: 6rem
+html
+    overflow-x: hidden
+
+// input size and size increase decrease styling
+input[type="text"],
+input[type="password"],
+input[type="time"],
+input[type="datetime-local"],
+textarea,
+select
+    border: 0
+    background: none
+    display: block
+    margin: 10px auto
+    padding: 0px 0px 0px 20px
+    border: 2px solid #3498db
+    width: 90% 
+    height: calc(1.5em + 0.75rem + 2px)
+    outline: none
+    //color: white
+    border-radius: 24px
+    transition: 0.25s
+
+textarea
+    height: calc(4.5em + 2.25rem + 6px)
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus
+    width: 100%
+    border-color:#17a2b8 !important
+
+button 
+        background: 17a2b8 !important
+
+input[type="submit"],
+button
+    border: 0
+    background: none
+    //display: block
+    //margin: 20px auto
+    text-align: center
+    border: 2px solid #17a2b8 !important
+    padding: 14px 40px
+    outline: none
+    //color: white
+    border-radius: 24px
+    transition: 0.25s
+    cursor: pointer
+    
+    &:hover
+        background: #17a2b8 !important
+
+// input size and size increase decrease styling

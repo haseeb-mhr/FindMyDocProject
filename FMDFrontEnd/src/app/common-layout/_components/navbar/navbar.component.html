@@ -1,0 +1,69 @@
+<nav class="d-flex navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <img class="brand" src="assets/logo.png" alt="First slide" routerLink="/">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="nav nav-pills mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/"><i class="fa fa-fw fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/find_my_doctor"><i class="fa fa-fw fa-search"></i>Find My Doctor</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-cogs"></i>Our Services</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/doctor/register"><i class="fa fa-fw fa-user-md"></i>Doctors</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-hospital-o"></i>Hospitals</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-h-square"></i>Clinics</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-medkit"></i>Pharmacies</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-tint"></i>Blood Bank</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-heartbeat"></i>Fitness Center</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/shopping-cart"><i class="fa fa-fw fa-newspaper-o"></i>Medical News</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-users"></i>About Us</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-street-view"></i>Who Are We</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-handshake-o"></i>Our Mission</a>
+                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-question-circle"></i>FAQs</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/contact_us"><i class="fa fa-fw fa-phone-square"></i>Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/help-line"><i class="fa fa-fw fa-info-circle"></i>Help Line</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav float-right mr-2">
+            <li class="nav-item dropdown" *ngIf="!userExists">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-user"></i>Login</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/auth/sign_in"><i class="fa fa-fw fa-sign-in"></i>Sign In</a>
+                    <a class="dropdown-item" routerLink="/auth/sign_up"><i class="fa fa-fw fa-user-plus"></i>Sign Up</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown" *ngIf="userExists">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-user"></i>{{user.firstName}}
+                    {{user.lastName}}</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="logOut()"><i class="fa fa-fw fa-sign-out"></i>Sign Out</a>
+                    <a class="dropdown-item" routerLink="/user/updateDetails"><i class="fa fa-fw fa-pencil"></i>Edit Account</a>
+                    <a class="dropdown-item" routerLink="/user/update" *ngIf='isAdmin'><i class="fa fa-fw fa-pencil-square-o"></i>Update Users</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

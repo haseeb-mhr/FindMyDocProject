@@ -1,0 +1,19 @@
+▼ src
++ -- ▼ app
+|    +-- ▼ user-details
+|    |   | --- user-details.compoent.ts | .html | .sass
+|    |
+|    +-- ▼ models
+|    |   | --- user.models.ts
+|    |
+|    +-- ▼ services
+|    |   | --- application.service.ts
+|    |   | --- http.service.ts
+|    |
+|    | --- app.compoent.ts | .html | .sass
+|    | --- app-routing.module.ts
+|    | --- app.module.ts
+|
+| --- index.html (path for bootstrap-styling | fa-icons)
+| --- style.sass ( main styling )
+►

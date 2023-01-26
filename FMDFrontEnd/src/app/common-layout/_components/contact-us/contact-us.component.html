@@ -1,0 +1,76 @@
+<div class="container col-md-6 pt-2 justify-content-center">
+    <div class="card">
+        <h4 class="card-header">Register Queries</h4>
+        <div class="card-body">
+            <form [formGroup]="form">
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="firstName">First Name</label>
+                        <input type="text" formControlName="firstName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" formControlName="lastName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="personCNIC">Person CNIC</label>
+                        <input type="text" formControlName="personCNIC" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.personCNIC.errors }" />
+                        <div *ngIf="submitted && f.personCNIC.errors" class="invalid-feedback">
+                            <div *ngIf="f.personCNIC.errors.required">Person CNIC is required</div>
+                            <div *ngIf="f.personCNIC.errors?.pattern">User CNIC must follow the 12345-1234567-1 format!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="contactNumber">Contact Number</label>
+                        <input type="text" formControlName="contactNumber" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.contactNumber.errors }" />
+                        <div *ngIf="submitted && f.contactNumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.contactNumber.errors.required">Contact Number is required</div>
+                            <div *ngIf="f.contactNumber.errors?.pattern">User CNIC must follow the 0312 1234567 format!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Contact Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email is invalid</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="complainDiscription">Complain Discription</label>
+                    <textarea formControlName="complainDiscription" class="form-control" rows="5"
+                        [ngClass]="{ 'is-invalid': submitted && f.complainDiscription.errors }"></textarea>
+                    <div *ngIf="submitted && f.complainDiscription.errors" class="invalid-feedback">
+                        <div *ngIf="f.complainDiscription.errors.required">Complain Discription is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary" (click)="onSubmit()">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Register
+                    </button>
+                    <a routerLink="../" class="btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
